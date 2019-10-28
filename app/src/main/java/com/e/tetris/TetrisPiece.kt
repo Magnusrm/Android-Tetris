@@ -4,13 +4,12 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
-import com.e.tetris.shapes.*
 import java.util.*
 
 class TetrisPiece {
 
     var shape : Array<IntArray> = arrayOf()
-    var topLeft : Map<String, Int> = mapOf("row" to 0, "col" to 0)
+    var topLeft : IntArray = intArrayOf(0, 4)
 
     val painter: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         strokeWidth = 10f
@@ -37,7 +36,7 @@ class TetrisPiece {
             intArrayOf(1, 1),
             intArrayOf(1, 1))
 
-        topLeft = mapOf("row" to 0, "column" to 4)
+        topLeft = intArrayOf(0, 4)
     }
 
     fun zShape() {
@@ -45,7 +44,7 @@ class TetrisPiece {
             intArrayOf(4, 4, 0),
             intArrayOf(0, 4, 4))
 
-        topLeft = mapOf("row" to 0, "column" to 4)
+        topLeft = intArrayOf(0, 4)
     }
 
     fun line() {
@@ -55,7 +54,7 @@ class TetrisPiece {
             intArrayOf(2),
             intArrayOf(2))
 
-        topLeft = mapOf("row" to 0, "column" to 4)
+        topLeft = intArrayOf(0, 4)
     }
 
     fun lShape() {
@@ -64,7 +63,7 @@ class TetrisPiece {
             intArrayOf(3, 0),
             intArrayOf(3, 3))
 
-        topLeft = mapOf("row" to 0, "column" to 4)
+        topLeft = intArrayOf(0, 4)
     }
 
     fun tShape() {
@@ -72,6 +71,6 @@ class TetrisPiece {
             intArrayOf(5, 5, 5),
             intArrayOf(0, 5, 0))
 
-        topLeft = mapOf("row" to 0, "column" to 4)
+        topLeft = intArrayOf(0, 4)
     }
 }

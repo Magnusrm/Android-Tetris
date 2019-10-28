@@ -27,22 +27,22 @@ class TetrisView(context: Context) : View(context) {
     }
 
     fun drawBoard(canvas : Canvas) {
-        for (row in landed) {
-            for (col in row) {
-                if (row[col] != 0) {
-                    canvas.drawRect(50f * (landed.indexOf(row) + 1) + 100f, 50f * (row.indexOf(col) + 1) + 100f,
-                        50f * (landed.indexOf(row) + 2) + 100f, 50f * (row.indexOf(col) + 2) + 100f, painter)
+        for (i in landed.indices) {
+            for (j in landed[i].indices) {
+                if (landed[i][j] != 0) {
+                    canvas.drawRect(50f * (i + 1) + 100f, 50f * (j + 1) + 100f,
+                        50f * (i + 2) + 100f, 50f * (j + 2) + 100f, painter)
                 }
             }
         }
 
-        for (row in currentPiece.shape) {
-            for (col in row) {
-                if (row[col] != 0) {
-                    canvas.drawRect(50f * (currentPiece.shape.indexOf(row) + currentPiece.topLeft["row"]!! + 1) + 100f,
-                        50f * (row.indexOf(col) + currentPiece.topLeft["col"]!! + 1) + 100f,
-                        50f * (currentPiece.shape.indexOf(row) + currentPiece.topLeft["row"]!! + 2) + 100f,
-                        50f * (row.indexOf(col) + currentPiece.topLeft["col"]!! + 2) + 100f, painter)
+        for (i in currentPiece.shape.indices) {
+            for (j in currentPiece.shape[i].indices) {
+                if (currentPiece.shape[i][j] != 0) {
+                    canvas.drawRect(50f * (i + currentPiece.topLeft[0] + 1) + 100f,
+                        50f * (j + currentPiece.topLeft[1] + 1) + 100f,
+                        50f * (i + currentPiece.topLeft[0] + 2) + 100f,
+                        50f * (j + currentPiece.topLeft[1] + 2) + 100f, painter)
                 }
             }
         }

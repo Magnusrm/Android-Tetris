@@ -2,6 +2,7 @@ package com.e.tetris
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -21,9 +22,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainContentLayout.post {
+        addGameView()
+        startGameLoop()
 
+        mainContentLayout.post {
+            /*
             addGameView()
+            startGameLoop()
+
 
             mainContentLayout.setOnClickListener {
                 if (gameStarted) {
@@ -34,7 +40,31 @@ class MainActivity : AppCompatActivity() {
                     addGameView()
                 }
             }
+            */
+
         }
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        val x = event.x
+        val y = event.y
+
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                if(x > mainContentLayout.width / 2 && y < mainContentLayout.height * 0.80) {
+                    // move right
+                    tetris?.move(1)
+                }
+                else if (x < mainContentLayout.width / 2 && y < mainContentLayout.height * 0.80) {
+                    // move left
+                    tetris?.move(0)
+                } else if (y > mainContentLayout.height* 0.80){
+                    tetris?.rotate()
+                }
+            }
+        }
+        return true
     }
 
     override fun onDestroy() {
@@ -65,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        timer.schedule(gameTimerTask, 0, 20)
+        timer.schedule(gameTimerTask, 0, 500)
         gameStarted = true
     }
 

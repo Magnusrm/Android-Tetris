@@ -10,12 +10,8 @@ class TetrisPiece {
 
     var shape : Array<IntArray> = arrayOf()
     var topLeft : IntArray = intArrayOf(0, 4)
+    var potTopLeft : IntArray = intArrayOf(0, 4)
 
-    val painter: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        strokeWidth = 10f
-        style = Paint.Style.FILL
-        color = Color.RED
-    }
 
     init {
         getBlock()
@@ -37,6 +33,7 @@ class TetrisPiece {
             intArrayOf(1, 1))
 
         topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
     }
 
     fun zShape() {
@@ -45,6 +42,7 @@ class TetrisPiece {
             intArrayOf(0, 4, 4))
 
         topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
     }
 
     fun line() {
@@ -55,6 +53,7 @@ class TetrisPiece {
             intArrayOf(2))
 
         topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
     }
 
     fun lShape() {
@@ -64,6 +63,7 @@ class TetrisPiece {
             intArrayOf(3, 3))
 
         topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
     }
 
     fun tShape() {
@@ -72,5 +72,6 @@ class TetrisPiece {
             intArrayOf(0, 5, 0))
 
         topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
     }
 }

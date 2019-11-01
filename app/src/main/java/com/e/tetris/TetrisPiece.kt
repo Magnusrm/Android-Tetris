@@ -17,12 +17,14 @@ class TetrisPiece {
         getBlock()
     }
 
-    fun getBlock() = when (Random().nextInt(5) + 1) {
+    fun getBlock() = when (Random().nextInt(7) + 1) {
         1 -> square()
         2 -> zShape()
         3 -> line()
         4 -> lShape()
         5 -> tShape()
+        6 -> jShape()
+        7 -> sShape()
         else -> throw Exception("Invalid choice")
     }
 
@@ -74,4 +76,24 @@ class TetrisPiece {
         topLeft = intArrayOf(0, 4)
         potTopLeft = intArrayOf(0, 4)
     }
+
+    fun jShape() {
+        shape  = arrayOf(
+            intArrayOf(0, 6),
+            intArrayOf(0, 6),
+            intArrayOf(6, 6))
+
+        topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
+    }
+
+    fun sShape() {
+        shape = arrayOf(
+            intArrayOf(0, 7, 7),
+            intArrayOf(7, 7, 0))
+
+        topLeft = intArrayOf(0, 4)
+        potTopLeft = intArrayOf(0, 4)
+    }
+
 }

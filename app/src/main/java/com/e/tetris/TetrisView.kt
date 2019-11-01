@@ -43,6 +43,7 @@ class TetrisView(context: Context) : View(context) {
         for (i in currentPiece.shape.indices) {
             for (j in currentPiece.shape[i].indices) {
                 if (currentPiece.shape[i][j] != 0) {
+                    setColor(currentPiece.shape[i][j])
                     canvas.drawRect(boxSize * (j + currentPiece.topLeft[1]) + marginX,
                         boxSize * (i + currentPiece.topLeft[0]) + marginY,
                         boxSize * (j + currentPiece.topLeft[1] + 1) + marginX,
@@ -54,6 +55,7 @@ class TetrisView(context: Context) : View(context) {
         for (i in landed.indices) {
             for (j in landed[i].indices) {
                 if (landed[i][j] != 0) {
+                    setColor(landed[i][j])
                     canvas.drawRect(boxSize * (j) + marginX, boxSize * (i) + marginY,
                         boxSize * (j + 1) + marginX, boxSize * (i + 1) + marginY, painter)
                 }
@@ -144,7 +146,6 @@ class TetrisView(context: Context) : View(context) {
     }
 
     fun rotate() {
-
         val width = currentPiece.shape[0].size
         val height = currentPiece.shape.size
         val potShape = Array(width){IntArray(height)}
@@ -175,8 +176,18 @@ class TetrisView(context: Context) : View(context) {
                 }
             }
         }
-
         currentPiece.shape = potShape
+    }
 
+    fun setColor(type : Int) {
+        when(type) {
+            1 -> painter.setColor(Color.RED)
+            2 -> painter.setColor(Color.BLUE)
+            3 -> painter.setColor(Color.YELLOW)
+            4 -> painter.setColor(Color.GREEN)
+            5 -> painter.setColor(Color.MAGENTA)
+            6 -> painter.setColor(Color.CYAN)
+            7 -> painter.setColor(Color.DKGRAY)
+        }
     }
 }

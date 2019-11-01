@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetris</string>
+
+    <string name="start_game">Start game</string>
+    <string name="end_game">End game</string>
+    <string name="information">Information</string>
+    <string name="play_tetris">Play tetris</string>
+    <string name="info_text">
+        Move right: tap on right side of screen\n
+        Move left: tap on left side of screen\n
+        Rotate: tap on bottom part of screen\n
+        \n
+        If there is no space to rotate,\n
+        you will have to move to where there is space.
+    </string>
+    <string name="nor">Norsk</string>
+    <string name="eng">English</string>
+
+</resources>

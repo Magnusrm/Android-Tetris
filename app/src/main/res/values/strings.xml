@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Tetris</string>
+
+    <string name="start_game">Start spill</string>
+    <string name="end_game">Avslutt spill</string>
+    <string name="information">Informasjon</string>
+    <string name="play_tetris">Spill tetris</string>
+    <string name="info_text">
+        Flytt høyre: trykk til høyre på skjermen\n
+        Flytt venstre: trykk til venstre på skjermen\n
+        Roter: trykk nede på skjermen\n
+        \n
+        Dersom det ikke er plass til å rotere,\n
+        må du flytte brikken der det er plass.
+    </string>
+    <string name="nor">Norsk</string>
+    <string name="eng">English</string>
+
 </resources>

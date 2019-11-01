@@ -1,7 +1,12 @@
 package com.e.tetris
 
+import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -22,27 +27,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addGameView()
-        startGameLoop()
+    }
 
-        mainContentLayout.post {
-            /*
-            addGameView()
-            startGameLoop()
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menu?.add(resources.getString(R.string.start_game))
+        menu?.add(resources.getString(R.string.end_game))
+        menu?.add(resources.getString(R.string.information))
+        menu?.add(resources.getString(R.string.nor))
+        menu?.add(resources.getString(R.string.eng))
 
+        return true
+    }
 
-            mainContentLayout.setOnClickListener {
-                if (gameStarted) {
-                    stopGameLoop()
-                    removeGameView()
-                } else {
-                    startGameLoop()
-                    addGameView()
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.toString()) {
+            resources.getString(R.string.start_game) -> {if (!gameStarted){
+                startGameLoop()
+                addGameView()
+            }}
+            resources.getString(R.string.end_game) -> {if (gameStarted) {
+                stopGameLoop()
+                removeGameView()
+            }}
+            (resources.getString(R.string.information)) -> {startActivity(Intent(this, InfoActivity::class.java))}
+            (resources.getString(R.string.eng)) -> {
+                changeLang(item.toString())
             }
-            */
-
+            (resources.getString(R.string.nor)) -> {
+                changeLang(item.toString())
+            }
         }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -102,5 +120,27 @@ class MainActivity : AppCompatActivity() {
     fun stopGameLoop() {
         timer.cancel()
         gameStarted = false
+    }
+
+    fun changeLang(lang : String) {
+
+        var locale = resources.configuration.locale
+
+        if (lang == resources.getString(R.string.eng)) {
+            locale = Locale("en", "EN")
+        }
+        else if (lang == resources.getString(R.string.nor)) {
+            locale = Locale("no", "NO")
+        }
+
+        val config = Configuration()
+        config.locale = locale;
+        val res = baseContext.resources
+        res.updateConfiguration(config, res.displayMetrics)
+
+        val updateIntent = intent
+        finish()
+        startActivity(updateIntent)
+
     }
 }

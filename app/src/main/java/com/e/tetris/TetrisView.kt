@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 
 class TetrisView(context: Context) : View(context) {
 
@@ -106,6 +107,10 @@ class TetrisView(context: Context) : View(context) {
                     landed[i + currentPiece.topLeft[0]][j + currentPiece.topLeft[1]] = currentPiece.shape[i][j]
                 }
             }
+        }
+
+        if (currentPiece.topLeft[0] == 0) {
+            landed = Array(16) {Array(10) {0} }
         }
 
         newPiece()
